@@ -97,7 +97,7 @@ const pictures = (picArray) => {
         document.querySelector('#row-content').appendChild(column);
     }
 };
-
+/*
 fetch('/get-cats')
     .then( (res) => {
         return res.json();
@@ -110,7 +110,19 @@ fetch('/get-cats')
         });
         categories = new Set(categorylist);
     }
-);
+);*/
+const set = {
+    method: 'GET',
+    credentials: 'include',
+};
+
+fetch('/get-cats', set)
+    .then( (res) => {
+        return res;
+    })
+    .then( (result) => {
+        console.log(result);
+    });
 
 const catForm = document.querySelector('#add-cat');
 catForm.addEventListener( 'submit', (evt) => {

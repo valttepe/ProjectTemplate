@@ -20,10 +20,24 @@ router.use(multerparse.array());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
-// Old way
 const picSchema = schemas.catSchema();
 // model
 const Picture = db.getSchema(picSchema, 'Picture');
+
+// Authentication Middleware
+const loggedInOnly = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log(req.isAuthenticated());
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
+
+const loggedOutOnly = (req, res, next) => {
+  if (req.isUnauthenticated()) next();
+  else res.redirect('/');
+};
 
 
 /* GET home page. */
@@ -32,7 +46,7 @@ router.get('/', (req, res, next) => {
 });
 
 // Get cats to front page
-router.get('/get-cats', (req, res, next) => {
+router.get('/get-cats', loggedInOnly, (req, res, next) => {
   Picture.find().then((cats) => {
     res.send(cats);
   });
@@ -45,11 +59,12 @@ router.get('/get-cats', (req, res, next) => {
  */
 
 // Upload orginal image and get other data here
-router.post('/post-cat', upload.single('file'), function(req, res, next) {
+router.post('/post-cat', loggedInOnly,
+ upload.single('file'), function(req, res, next) {
   console.log('Post');
   req.body.original = 'original/' + req.file.filename;
   console.log(req.body);
-  next();
+  // next();
 });
 
 // Make thumbnail and add its path to the data

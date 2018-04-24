@@ -61,7 +61,7 @@ const authenticate = (passport) => {
   });
 
   // Logout Handler
-  router.all('/logout', function(req, res) {
+  router.all('/logout', (req, res) => {
     req.logout();
     res.redirect('/login');
   });
