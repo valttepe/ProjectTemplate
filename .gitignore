@@ -3,6 +3,17 @@ node_modules
 .eslintrc.js
 ssl-cert.pem
 ssl-key.pem
-images/medium/*
-images/original/*
-images/thumb/*
+
+# exclude everything
+public/images/medium/*
+public/images/original/*
+public/images/thumb/*
+
+# keep empty folder
+!public/images/medium/.gitkeep
+!public/images/original/.gitkeep
+!public/images/thumb/.gitkeep
+
+
+
+
