@@ -12,7 +12,7 @@ const mapRouter = () => {
         res.render('map');
     });
 
-
-}
+    return router;
+};
 
 module.exports = mapRouter;

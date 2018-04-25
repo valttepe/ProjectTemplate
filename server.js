@@ -72,7 +72,7 @@ const passport = passencrypt.getPassport();
 app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
 app.use('/', mainRouter(upload));
-app.use('/map', mapRouter);
+app.use('/map', mapRouter());
 
 
 // catch 404 and forward to error handler
