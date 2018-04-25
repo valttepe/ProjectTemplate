@@ -60,3 +60,10 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
+#map {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px
+}

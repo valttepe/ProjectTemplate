@@ -15,6 +15,7 @@ const helmet = require('helmet');
 const indexRouter = require('./routes/index');
 const chatRouter = require('./routes/chat');
 const mainRouter = require('./routes/main');
+const mapRouter = require('./routes/map');
 // const usersRouter = require('./routes/users');
 
 // Own modules
@@ -66,9 +67,12 @@ app.use(flash());
 app.use('/modules', express.static('node_modules'));
 
 const passport = passencrypt.getPassport();
+
+// Add Routes to app
 app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
 app.use('/', mainRouter(upload));
+app.use('/map', mapRouter);
 
 
 // catch 404 and forward to error handler
