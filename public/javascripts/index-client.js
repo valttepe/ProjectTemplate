@@ -97,8 +97,13 @@ const pictures = (picArray) => {
         document.querySelector('#row-content').appendChild(column);
     }
 };
-/*
-fetch('/get-cats')
+
+const set = {
+    method: 'GET',
+    credentials: 'include',
+};
+
+fetch('/get-cats', set)
     .then( (res) => {
         return res.json();
     })
@@ -109,40 +114,26 @@ fetch('/get-cats')
             return item.category;
         });
         categories = new Set(categorylist);
-    }
-);*/
-const set = {
-    method: 'GET',
-    credentials: 'include',
-};
-
-fetch('/get-cats', set)
-    .then( (res) => {
-        return res;
-    })
-    .then( (result) => {
-        console.log(result);
     });
 
 const catForm = document.querySelector('#add-cat');
 catForm.addEventListener( 'submit', (evt) => {
     evt.preventDefault();
     const fData = new FormData(evt.target);
-    /*
     // Check that formdata has values
     for (let value of fData.values()) {
         console.log(value);
     }
-    */
     const settings = {
         method: 'post',
+        credentials: 'include',
         body: fData,
     };
     // First then return must return promise
     // next is for using response data.
     fetch('/post-cat', settings)
         .then( (response) => {
-            return response.json();
+            return response;
         }).then( (result) => {
             console.log(result);
             // window.location.replace('/');

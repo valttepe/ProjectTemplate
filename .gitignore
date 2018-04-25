@@ -3,3 +3,6 @@ node_modules
 .eslintrc.js
 ssl-cert.pem
 ssl-key.pem
+images/medium/*
+images/original/*
+images/thumb/*

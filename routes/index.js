@@ -2,17 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../own_modules/models/usermodel');
-
-// Authentication Middleware
-const loggedInOnly = (req, res, next) => {
-  if (req.isAuthenticated()) next();
-  else res.redirect('/login');
-};
-
-const loggedOutOnly = (req, res, next) => {
-  if (req.isUnauthenticated()) next();
-  else res.redirect('/');
-};
+const loggedInOnly = require('../own_modules/middleware/loggedin');
+const loggedOutOnly = require('../own_modules/middleware/loggedout');
 
 // Route Handlers
 const authenticate = (passport) => {

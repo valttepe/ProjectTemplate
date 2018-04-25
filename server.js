@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 const logger = require('morgan');
 const flash = require('express-flash-messages');
 const fs = require('fs');
@@ -30,6 +31,14 @@ const options = {
     cert: sslcert,
 };
 
+const storage = multer.diskStorage({
+    'destination': './public/images/original/',
+    'filename'(req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+    },
+});
+const upload = multer({storage});
+
 passencrypt.init(app);
 // 'mongodb://catAdmin:Adminpass@localhost:27017/data'
 const url = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/data';
@@ -43,6 +52,10 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(cookieParser());
+
+
+// app.use(multerparse.array());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
@@ -55,7 +68,7 @@ app.use('/modules', express.static('node_modules'));
 const passport = passencrypt.getPassport();
 app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
-app.use('/', mainRouter);
+app.use('/', mainRouter(upload));
 
 
 // catch 404 and forward to error handler
