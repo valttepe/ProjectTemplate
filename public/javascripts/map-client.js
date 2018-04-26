@@ -1,8 +1,13 @@
 let map;
 let infowindow;
 
+
 const initMap = () => {
-  let pyrmont = {lat: 60.218208, lng: 24.811968};
+    // Sello location
+  // let pyrmont = {lat: 60.218208, lng: 24.811968};
+
+  // Pasila
+  let pyrmont = {lat: 60.198981, lng: 24.932845};
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
@@ -10,6 +15,7 @@ const initMap = () => {
   });
 
   infowindow = new google.maps.InfoWindow();
+
   let service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
     location: pyrmont,
@@ -21,7 +27,7 @@ const initMap = () => {
 const callback = (results, status) => {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (let i = 0; i < results.length; i++) {
-        console.log(results[i]);
+        // console.log(results[i]);
         createMarker(results[i]);
     }
   }
@@ -29,14 +35,16 @@ const callback = (results, status) => {
 
 const createMarker = (place) => {
   let placeLoc = place.geometry.location;
-  let marker = new google.maps.Marker({
+  let marker;
+  marker = new google.maps.Marker({
     map: map,
-    position: place.geometry.location,
+    position: placeLoc,
   });
 
   google.maps.event.addListener(marker, 'click', () => {
+    // console.log(place);
     infowindow.setContent(place.name);
-    infowindow.open(map, this);
+    infowindow.open(map, marker);
   });
 }
   google.maps.event.addDomListener(window, 'load', initMap);
