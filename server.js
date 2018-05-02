@@ -16,6 +16,7 @@ const indexRouter = require('./routes/index');
 const chatRouter = require('./routes/chat');
 const mainRouter = require('./routes/main');
 const mapRouter = require('./routes/map');
+const addEventRouter = require('./routes/add-event');
 // const usersRouter = require('./routes/users');
 
 // Own modules
@@ -73,6 +74,7 @@ app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
 app.use('/', mainRouter(upload));
 app.use('/map', mapRouter());
+app.use('/add-event', addEventRouter());
 
 
 // catch 404 and forward to error handler
