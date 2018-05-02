@@ -31,11 +31,11 @@ const callback = (results, status) => {
     }
   }
 };
-const eventList = () => {
+const eventList = (place) => {
   const openList = document.querySelector('#openList');
   openList.addEventListener('click', (evt) => {
-    console.log('Button clicked');
-    window.location.href= '/';
+    console.log('Button clicked: ' + place.name);
+    // window.location.href= '/';
   });
 };
 
@@ -56,7 +56,7 @@ const createMarker = (place) => {
     + '<div>';
     infowindow.setContent(infoContent);
     infowindow.open(map, marker);
-    eventList();
+    eventList(place);
   });
 };
   google.maps.event.addDomListener(window, 'load', initMap);

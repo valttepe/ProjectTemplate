@@ -1,7 +1,6 @@
 extends layout/layout
 
 block content
-  include layout/nav.pug
   .container
     // Nav tabs
     ul.nav.nav-tabs(role="tablist")
@@ -52,4 +51,5 @@ block content
         img#imageholder.img-fluid(src="#" alt="kitten")
         p#detailholder
         button#edit-btn Edit
+  include layout/nav.pug
   script(src='javascripts/index-client.js')
