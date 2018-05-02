@@ -25,6 +25,19 @@ class Schemas {
           };
         return catSchema;
     }
+
+    eventSchema() {
+        const eventSchema = {
+            title: String,
+            user: String,
+            fieldId: String,
+            date: String,
+            weeks: String,
+            image: String,
+        };
+        return eventSchema;
+    }
+
 }
 
 module.exports = new Schemas();

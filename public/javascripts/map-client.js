@@ -1,16 +1,15 @@
 let map;
 let infowindow;
 
-
 const initMap = () => {
     // Sello location
-  // let pyrmont = {lat: 60.218208, lng: 24.811968};
+  // let location = {lat: 60.218208, lng: 24.811968};
 
   // Pasila
-  let pyrmont = {lat: 60.198981, lng: 24.932845};
+  let location = {lat: 60.198981, lng: 24.932845};
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: pyrmont,
+    center: location,
     zoom: 15,
   });
 
@@ -18,11 +17,11 @@ const initMap = () => {
 
   let service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
-    location: pyrmont,
+    location: location,
     radius: 5000,
     keyword: ['jalkapallokenttä'],
   }, callback);
-}
+};
 
 const callback = (results, status) => {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -31,7 +30,14 @@ const callback = (results, status) => {
         createMarker(results[i]);
     }
   }
-}
+};
+const eventList = () => {
+  const openList = document.querySelector('#openList');
+  openList.addEventListener('click', (evt) => {
+    console.log('Button clicked');
+    window.location.href= '/';
+  });
+};
 
 const createMarker = (place) => {
   let placeLoc = place.geometry.location;
@@ -43,8 +49,14 @@ const createMarker = (place) => {
 
   google.maps.event.addListener(marker, 'click', () => {
     // console.log(place);
-    infowindow.setContent(place.name);
+    // InfoWindow content
+    let infoContent = '<div id="content">'
+    + '<p>' + place.name + '</p>'
+    + '<button type="button" id="openList"> Open </button>'
+    + '<div>';
+    infowindow.setContent(infoContent);
     infowindow.open(map, marker);
+    eventList();
   });
-}
+};
   google.maps.event.addDomListener(window, 'load', initMap);
