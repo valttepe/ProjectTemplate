@@ -1,6 +1,7 @@
 extends layout/layout
 
 block content
+    link(rel='stylesheet', href='/stylesheets/map.css')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCMx0duwKZ8fF9rQdsvuTI6VypAIcaC4WM&libraries=places')
     div#map
     include layout/nav.pug

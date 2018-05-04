@@ -5,35 +5,43 @@ block content
     script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js")
     script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/js/tempusdominus-bootstrap-4.min.js")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css")
-    //- .container
-    //-         h2 New Event
-    //-         form#add-cat.form-horizontal
-    //-             .form-group
-    //-             label.control-label.col-sm-2(for="title") Event name:
-    //-             .col-sm-10
-    //-                 input#title.form-control(type="text" placeholder="Enter name" name="title")
-    //-             .form-group
-    //-                 #datetimepicker.input-append.date(data-date="12-02-2012" data-date-format="dd-mm-yyyy")
-    //-                     input.span2(size="16" type="text" value="12-02-2012")
-    //-                     span.add-on
-    //-                     i.icon-th
-    //-             .form-group
-    //-                 label.control-label.col-sm-2(for="file") Image:
-    //-                 input#file.form-control(type="file" name="file" accept="image/*")
-    //-             .form-group
-    //-                 .col-sm-offset-2.col-sm-10
-    //-                     button.btn.btn-default(type="submit")
-
+    link(rel="stylesheet" href="stylesheets/add-event.css")
     .container
-      .row
-        .col-sm-6
-          .form-group
-            #datetimepicker1.input-group.date(data-target-input="nearest")
-              input.form-control.datetimepicker-input(type="text" data-target="#datetimepicker1")
-              .input-group-append(data-target="#datetimepicker1" data-toggle="datetimepicker")
-                .input-group-text
-                  i.fa.fa-calendar
-        script(type="text/javascript").
-          $(function () {
-          $('#datetimepicker1').datetimepicker();
-          });
+      h2 New Event
+      form#add-cat.form-horizontal
+        .row
+          .col-sm-6
+            .form-group
+              label.control-label.col-sm-2(for="title") Name:
+              input#title.form-control(type="text" placeholder="Event name" name="title")
+        .row
+          .col-sm-6
+            .form-group
+              label.control-label.col-sm-2(for="date") Date:
+              #datetimepicker1.input-group.date(data-target-input="nearest")
+                input.form-control.datetimepicker-input(type="text" data-target="#datetimepicker1")
+                .input-group-append(data-target="#datetimepicker1" data-toggle="datetimepicker")
+                  .input-group-text
+                    i.fa.fa-calendar
+        .row
+          .col-sm-6
+            .form-group
+              label.control-label.col-sm-6(for="range") Max participants:
+              input#formControlRange.slider.form-control-range(type="range" min="1" max="40" value="5")
+              label.control-label.col-sm-6.value Count: 40
+        .row
+          .col-sm-6
+            .form-group
+              label.control-label.col-sm-6(for="detail") Info:
+              textarea#detail.form-control(rows="3")
+        .row
+          .col-sm-6 
+            .form-group
+              label.control-label.col-sm-2(for="file") Image:
+              input#file.form-control(type="file" name="file" accept="image/*")
+        .row  
+          .col-sm-offset-2.col-sm-10
+            .form-group
+              button.btn.btn-primary(type="submit") Create
+    include layout/nav.pug
+    script(src="javascripts/add-event-client.js")
