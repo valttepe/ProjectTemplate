@@ -19,21 +19,27 @@ block content
             .form-group
               label.control-label.col-sm-2(for="date") Date:
               #datetimepicker1.input-group.date(data-target-input="nearest")
-                input.form-control.datetimepicker-input(type="text" data-target="#datetimepicker1")
+                input.form-control.datetimepicker-input(type="text" data-target="#datetimepicker1" name="datetime")
                 .input-group-append(data-target="#datetimepicker1" data-toggle="datetimepicker")
                   .input-group-text
                     i.fa.fa-calendar
         .row
           .col-sm-6
             .form-group
+              label.control-label.col-sm-6(for="range") Start participants:
+              input#formControlRange.slider.start-slider.form-control-range(type="range" min="1" max="40" value="1" name="startRange")
+              label.control-label.col-sm-6.start Count: 40            
+        .row
+          .col-sm-6
+            .form-group
               label.control-label.col-sm-6(for="range") Max participants:
-              input#formControlRange.slider.form-control-range(type="range" min="1" max="40" value="5")
-              label.control-label.col-sm-6.value Count: 40
+              input#formControlRange.slider.end-slider.form-control-range(type="range" min="1" max="40" value="5" name="endRange")
+              label.control-label.col-sm-6.end Count: 40
         .row
           .col-sm-6
             .form-group
               label.control-label.col-sm-6(for="detail") Info:
-              textarea#detail.form-control(rows="3")
+              textarea#detail.form-control(rows="3" name="detail")
         .row
           .col-sm-6 
             .form-group

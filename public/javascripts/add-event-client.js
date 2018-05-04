@@ -7,15 +7,22 @@ $(() => {
 
 // Range slider
 
-const slider = document.querySelector('.slider');
-const output = document.querySelector('.value');
-console.log(slider);
-console.log(output);
-output.innerHTML = 'Count: ' + slider.value; // Display the default slider value
+const startSlider = document.querySelector('.start-slider');
+const start = document.querySelector('.start');
+start.innerHTML = 'Count: ' + startSlider.value;
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = () => {
-    output.innerHTML = 'Count: ' + slider.value;
+startSlider.oninput = () => {
+    start.innerHTML = 'Count: ' + startSlider.value;
+};
+
+const endSlider = document.querySelector('.end-slider');
+const end = document.querySelector('.end');
+end.innerHTML = 'Count: ' + endSlider.value;
+
+// Update the current slider value (each time you drag the slider handle)
+endSlider.oninput = () => {
+    end.innerHTML = 'Count: ' + endSlider.value;
 };
 
 
