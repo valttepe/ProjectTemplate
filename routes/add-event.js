@@ -7,6 +7,11 @@ const addEvent = () => {
         res.render('add-event');
     });
 
+    router.post('/new', (req, res, next) => {
+        console.log('Post Event');
+        res.send('It works');
+    });
+
     return router;
 };
 

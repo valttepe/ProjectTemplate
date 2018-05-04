@@ -17,3 +17,30 @@ output.innerHTML = 'Count: ' + slider.value; // Display the default slider value
 slider.oninput = () => {
     output.innerHTML = 'Count: ' + slider.value;
 };
+
+
+const addEventForm = document.querySelector('#add-event');
+addEventForm.addEventListener( 'submit', (evt) => {
+    evt.preventDefault();
+    const fData = new FormData(evt.target);
+    // Check that formdata has values
+    for (let value of fData.values()) {
+        console.log(value);
+    }
+    const settings = {
+        method: 'post',
+        credentials: 'include',
+        body: fData,
+    };
+    // First then return must return promise
+    // next is for using response data.
+    fetch('add-event/new', settings)
+        .then( (response) => {
+            return response;
+        }).then( (result) => {
+            console.log(result);
+            // window.location.replace('/');
+        }
+    );
+});
+
