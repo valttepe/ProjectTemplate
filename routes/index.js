@@ -9,7 +9,7 @@ const loggedOutOnly = require('../own_modules/middleware/loggedout');
 const authenticate = (passport) => {
   // Main Page
   router.get('/', loggedInOnly, (req, res) => {
-    res.render('index', {username: req.user.username});
+    res.render('map', {username: req.user.username});
   });
 
   // Login View

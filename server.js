@@ -17,7 +17,6 @@ const chatRouter = require('./routes/chat');
 const mainRouter = require('./routes/main');
 const mapRouter = require('./routes/map');
 const addEventRouter = require('./routes/add-event');
-// const usersRouter = require('./routes/users');
 
 // Own modules
 const passencrypt = require('./own_modules/passencrypt');
@@ -72,8 +71,8 @@ const passport = passencrypt.getPassport();
 // Add Routes to app
 app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
-app.use('/', mainRouter(upload));
-app.use('/map', mapRouter());
+// app.use('/', mainRouter(upload));
+app.use('/', mapRouter());
 app.use('/add-event', addEventRouter());
 
 

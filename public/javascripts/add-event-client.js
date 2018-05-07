@@ -29,7 +29,10 @@ endSlider.oninput = () => {
 const addEventForm = document.querySelector('#add-event');
 addEventForm.addEventListener( 'submit', (evt) => {
     evt.preventDefault();
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get('id');
     const fData = new FormData(evt.target);
+    fData.append('id', id);
     // Check that formdata has values
     for (let value of fData.values()) {
         console.log(value);
@@ -41,12 +44,12 @@ addEventForm.addEventListener( 'submit', (evt) => {
     };
     // First then return must return promise
     // next is for using response data.
-    fetch('add-event/new', settings)
+    fetch('add-event/', settings)
         .then( (response) => {
             return response;
         }).then( (result) => {
             console.log(result);
-            // window.location.replace('/');
+            window.location.replace('/');
         }
     );
 });

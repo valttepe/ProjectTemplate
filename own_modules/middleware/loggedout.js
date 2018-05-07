@@ -2,9 +2,8 @@
 const loggedOutOnly = (req, res, next) => {
     if (req.isUnauthenticated()) {
         next();
-    }
-    else {
-        res.redirect('/');
+    } else {
+        res.send('loggedIn');
     }
 };
 

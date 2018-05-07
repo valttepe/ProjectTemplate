@@ -4,8 +4,9 @@ const loggedInOnly = (req, res, next) => {
     console.log(req.isAuthenticated());
     next();
     } else {
-    console.log( 'something is wrong' + req.isAuthenticated());
-    res.redirect('/login');
+    console.log( 'something is wrong: ' + req.isAuthenticated());
+    // res.render('login', {warning: 'You need to login to have access'});
+    res.redirect('login');
     }
 };
 

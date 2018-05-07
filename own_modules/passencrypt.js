@@ -24,7 +24,10 @@ class Passencrypt {
         });
 
         this.passport.deserializeUser((userId, done) => {
-            this.User.findById(userId, (err, user) => done(err, user));
+            this.User.findById(userId, (err, user) => {
+                user.password = '';
+                done(err, user);
+            });
         });
 
         // Passport Local

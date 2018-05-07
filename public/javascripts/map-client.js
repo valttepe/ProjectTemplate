@@ -34,8 +34,8 @@ const callback = (results, status) => {
 const eventList = (place) => {
   const openList = document.querySelector('#openList');
   openList.addEventListener('click', (evt) => {
-    console.log('Button clicked: ' + place.name);
-    // window.location.href= '/';
+    console.log(place.id);
+    window.location.href= '/add-event?id=' + place.id;
   });
 };
 

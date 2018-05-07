@@ -5,16 +5,6 @@ const schemas = require('../own_modules/schemas');
 const imgmodifier = require('../own_modules/imagemodifier');
 const loggedInOnly = require('../own_modules/middleware/loggedin');
 
-/* const storage = multer.diskStorage({
-  'destination': '../public/images',
-  'filename'(req, file, cb) {
-      cb(null, Date.now() + file.originalname);
-  },
-});
-
-const upload = multer({storage});
-router.use(multerparse.array()); */
-
 const picSchema = schemas.catSchema();
 // model
 const Picture = db.getSchema(picSchema, 'Picture');
@@ -43,7 +33,6 @@ const mainrouter = (multer) => {
         console.log(req.headers);
         console.log(req.body);
         console.log(req.file);
-        // res.send('Mene ny siitä');
         next();
     });
 

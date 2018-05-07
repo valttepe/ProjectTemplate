@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const loggedInOnly = require('../own_modules/middleware/loggedin');
+const loggedOutOnly = require('../own_modules/middleware/loggedout');
+
 
 /**
  * Map functionalities
@@ -8,7 +11,7 @@ const router = express.Router();
 
 const mapRouter = () => {
     /* GET map page. */
-    router.get('/', (req, res, next) => {
+    router.get('/', loggedInOnly, (req, res, next) => {
         res.render('map');
     });
 
