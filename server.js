@@ -24,6 +24,8 @@ const db = require('./own_modules/database');
 const sockets = require('./own_modules/chatsocket.js');
 const app = express();
 
+
+/*
 // SSL KeysOptions
 const sslkey = fs.readFileSync('ssl-key.pem');
 const sslcert = fs.readFileSync('ssl-cert.pem');
@@ -31,6 +33,8 @@ const options = {
     key: sslkey,
     cert: sslcert,
 };
+
+*/
 
 const storage = multer.diskStorage({
     'destination': './public/images/original/',
@@ -43,9 +47,11 @@ const upload = multer({storage});
 passencrypt.init(app);
 // 'mongodb://catAdmin:Adminpass@localhost:27017/data'
 const url = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/data';
-console.log(url);
+// console.log(url);
+
+app.enable('trust proxy');
 // Connecting to db
-db.connect(url, app, options);
+db.connect(url, app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
