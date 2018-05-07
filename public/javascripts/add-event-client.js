@@ -49,7 +49,7 @@ addEventForm.addEventListener( 'submit', (evt) => {
             return response;
         }).then( (result) => {
             console.log(result);
-            window.location.replace('/');
+            // window.location.replace('/');
         }
     );
 });

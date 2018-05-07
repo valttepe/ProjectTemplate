@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const loggedInOnly = require('../own_modules/middleware/loggedin');
-const loggedOutOnly = require('../own_modules/middleware/loggedout');
-
 
 /**
  * Map functionalities

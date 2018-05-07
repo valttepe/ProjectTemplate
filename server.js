@@ -73,7 +73,7 @@ app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
 // app.use('/', mainRouter(upload));
 app.use('/', mapRouter());
-app.use('/add-event', addEventRouter());
+app.use('/add-event', addEventRouter(upload));
 
 
 // catch 404 and forward to error handler
