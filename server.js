@@ -49,7 +49,7 @@ passencrypt.init(app);
 const url = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.DB_NAME;
 // console.log(url);
 
-app.enable('trust proxy');
+// app.enable('trust proxy');
 // Connecting to db
 db.connect(url, app);
 
