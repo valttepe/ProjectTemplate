@@ -29,11 +29,15 @@ class Schemas {
     eventSchema() {
         const eventSchema = {
             title: String,
-            user: String,
-            fieldId: String,
-            date: String,
-            weeks: String,
-            image: String,
+            datetime: String,
+            startRange: Number,
+            endRange: Number,
+            detail: String,
+            id: String,
+            username: String,
+            original: String,
+            medium: String,
+            thumb: String,
         };
         return eventSchema;
     }
