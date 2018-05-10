@@ -13,3 +13,4 @@
 -- DB_PORT=27017
 -- DB_NAME=database
 -- SESSION_SEC=randomstring
+- run 'npm start'
