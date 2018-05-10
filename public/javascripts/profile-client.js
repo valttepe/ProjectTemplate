@@ -61,7 +61,7 @@ const list = (eventlist) => {
 
         show.addEventListener('click', (evt) => {
             console.log(array.id);
-            open(array.id);
+            window.location.href = '/item?_id=' + array._id;
         });
 
         remove.addEventListener('click', (evt) => {

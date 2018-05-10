@@ -16,7 +16,7 @@ const list = (eventlist) => {
         datetime.classList.add('mb-1');
 
         // Add data from the db
-        link.href = '/list/item?id=' + array.id;
+        link.href = 'item?_id=' + array._id;
         img.src = 'images/' + array.thumb;
         title.innerHTML = array.title;
         user.innerHTML = array.username;
@@ -69,7 +69,5 @@ const getList = () => {
 };
 
 getList();
-
-
 
 

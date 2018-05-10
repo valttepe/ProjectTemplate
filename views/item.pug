@@ -1,0 +1,19 @@
+extends layout/layout
+
+block content
+    .container
+        .card(style="width: 26rem;")
+            .card-body
+                h5.card-title Title
+                img.img-fluid(src="images/medium/1525949748455cat1.jpeg")
+            .card-body
+                p.card-text Participants: 0/20
+                p.card-text Details plaaplaaplaa
+                p.card-text owner
+                p.card-text datetime
+            .card-body
+                button#enroll-btn.btn.btn-secondary(type="button") Enroll
+
+            
+    include layout/nav.pug
+    script(src="javascripts/item-client.js")

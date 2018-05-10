@@ -56,8 +56,8 @@ const createMarker = (place) => {
     // InfoWindow content
     let infoContent = '<div id="content">'
     + '<p>' + place.name + '</p>'
-    + '<button type="button" id="openList"> Events </button>'
-    + '<button type="button" id="add-event"> Add new </button>'
+    + '<button class="btn btn-secondary" type="button" id="openList"> Events </button>'
+    + '<button class="btn btn-secondary" type="button" id="add-event"> Add new </button>'
     + '<div>';
     infowindow.setContent(infoContent);
     infowindow.open(map, marker);

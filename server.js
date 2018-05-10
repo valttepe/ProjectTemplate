@@ -18,6 +18,7 @@ const mapRouter = require('./routes/map');
 const addEventRouter = require('./routes/add-event');
 const listRouter = require('./routes/listing');
 const profileRouter = require('./routes/profile');
+const itemRouter = require('./routes/item');
 
 // Own modules
 const passencrypt = require('./own_modules/passencrypt');
@@ -69,6 +70,7 @@ app.use('/', mapRouter());
 app.use('/add-event', addEventRouter(upload));
 app.use('/list', listRouter());
 app.use('/profile', profileRouter());
+app.use('/item', itemRouter());
 
 
 // catch 404 and forward to error handler
