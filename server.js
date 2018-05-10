@@ -14,27 +14,15 @@ const helmet = require('helmet');
 // Route modules
 const indexRouter = require('./routes/index');
 const chatRouter = require('./routes/chat');
-const mainRouter = require('./routes/main');
 const mapRouter = require('./routes/map');
 const addEventRouter = require('./routes/add-event');
+const listRouter = require('./routes/listing');
 
 // Own modules
 const passencrypt = require('./own_modules/passencrypt');
 const db = require('./own_modules/database');
 const sockets = require('./own_modules/chatsocket.js');
 const app = express();
-
-
-/*
-// SSL KeysOptions
-const sslkey = fs.readFileSync('ssl-key.pem');
-const sslcert = fs.readFileSync('ssl-cert.pem');
-const options = {
-    key: sslkey,
-    cert: sslcert,
-};
-
-*/
 
 const storage = multer.diskStorage({
     'destination': './public/images/original/',
@@ -47,9 +35,8 @@ const upload = multer({storage});
 passencrypt.init(app);
 // 'mongodb://catAdmin:Adminpass@localhost:27017/data'
 const url = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.DB_NAME;
-console.log(url);
+// console.log(url);
 
-// app.enable('trust proxy');
 // Connecting to db
 db.connect(url, app);
 
@@ -77,9 +64,9 @@ const passport = passencrypt.getPassport();
 // Add Routes to app
 app.use('/chat', chatRouter);
 app.use('/', indexRouter(passport));
-// app.use('/', mainRouter(upload));
 app.use('/', mapRouter());
 app.use('/add-event', addEventRouter(upload));
+app.use('/list', listRouter());
 
 
 // catch 404 and forward to error handler

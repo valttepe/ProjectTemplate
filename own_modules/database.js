@@ -6,6 +6,7 @@ class Database {
         this.https = require('https');
     }
     connect(url, app) {
+        app.enable('trust proxy');
         // Add a handler to inspect the req.secure flag (see
         // http://expressjs.com/api#req.secure). This allows us
         // to know whether the request was via http or https.

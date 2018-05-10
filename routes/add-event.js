@@ -21,16 +21,18 @@ const addEvent = (multer) => {
         console.log(JSON.stringify(req.body));
         console.log(req.user.username);
         req.body.username = req.user.username;
+        req.body.count = req.body.startRange;
+        req.body.original = 'original/' + req.file.filename;
         next();
     });
 
     // Make thumbnail and add its path to the data
     router.use('/', (req, res, next) => {
         const thumbPath = 'thumb/' + req.file.filename;
-        imgmodifier.resize(req.file.path, './public/images/' + thumbPath, 320, 240)
+        imgmodifier.resize(req.file.path, './public/images/' + thumbPath, 100, 100)
         .then((resp) => {
             console.log(resp);
-            req.body.thumbnail = thumbPath;
+            req.body.thumb = thumbPath;
             next();
         });
     });

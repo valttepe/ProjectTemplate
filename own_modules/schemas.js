@@ -32,6 +32,7 @@ class Schemas {
             datetime: String,
             startRange: Number,
             endRange: Number,
+            count: Number,
             detail: String,
             id: String,
             username: String,
