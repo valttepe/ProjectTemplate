@@ -1,0 +1,17 @@
+extends layout/layout
+
+block content
+    .container
+        .card(style="width: 22rem;")
+            .card-body
+                h5.card-title Profile
+                p.card-text
+                | Welcome to your profile page
+            .card-body
+                button#logout-btn.btn.btn-secondary(type='button') Logout
+            .card-body
+                .list-group
+    include layout/nav.pug
+    script(src="javascripts/profile-client.js")
+
+

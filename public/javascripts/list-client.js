@@ -8,7 +8,6 @@ const list = (eventlist) => {
         const title = document.createElement('h5');
         const user = document.createElement('small');
         const datetime = document.createElement('p');
-        console.log(link);
         // Add classes
         link.classList.add('list-group-item', 'list-group-item-action',
             'flex-column', 'align-items-start');
@@ -21,14 +20,14 @@ const list = (eventlist) => {
         img.src = 'images/' + array.thumb;
         title.innerHTML = array.title;
         user.innerHTML = array.username;
-        datetime.innerhtml = array.datetime;
+        datetime.innerHTML = array.datetime;
 
         const container = document.querySelector('.list-group');
         link.appendChild(img);
         link.appendChild(title);
         link.appendChild(user);
         link.appendChild(datetime);
-
+        console.log(link);
         container.appendChild(link);
     }
 };
