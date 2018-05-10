@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const loggedInOnly = require('../own_modules/middleware/loggedin');
-const loggedOutOnly = require('../own_modules/middleware/loggedout');
 const imgmodifier = require('../own_modules/imagemodifier');
 const schemas = require('../own_modules/schemas');
 const db = require('../own_modules/database');
@@ -17,7 +16,8 @@ const addEvent = (multer) => {
         res.render('add-event');
     });
 
-    router.post('/', loggedInOnly, multer.single('file'), (req, res, next) => {
+    router.post('/', loggedInOnly,
+     multer.single('file'), (req, res, next) => {
         console.log(JSON.stringify(req.body));
         console.log(req.user.username);
         req.body.username = req.user.username;
@@ -29,7 +29,8 @@ const addEvent = (multer) => {
     // Make thumbnail and add its path to the data
     router.use('/', (req, res, next) => {
         const thumbPath = 'thumb/' + req.file.filename;
-        imgmodifier.resize(req.file.path, './public/images/' + thumbPath, 100, 100)
+        imgmodifier.resize(req.file.path,
+             './public/images/' + thumbPath, 100, 100)
         .then((resp) => {
             console.log(resp);
             req.body.thumb = thumbPath;
@@ -40,7 +41,8 @@ const addEvent = (multer) => {
     // Make mediumpic and add its path to the data
     router.use('/', (req, res, next) => {
         const medPath = 'medium/' + req.file.filename;
-        imgmodifier.resize(req.file.path, './public/images/' + medPath, 770, 720)
+        imgmodifier.resize(req.file.path,
+             './public/images/' + medPath, 770, 720)
         .then((resp) => {
             console.log(resp);
             req.body.medium = medPath;

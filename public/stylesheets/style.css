@@ -16,6 +16,10 @@ html, body {
   margin: 0.6em;
 }
 
+.images {
+  margin-right: 10px;
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
