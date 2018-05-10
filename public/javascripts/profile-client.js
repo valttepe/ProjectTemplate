@@ -1,4 +1,28 @@
 'use strict';
+const eventRemove = (id, link) => {
+    const data = {};
+    data.id = id;
+    const set = {
+        method: 'DELETE',
+        credentials: 'include',
+        body: JSON.stringify(data),
+        headers: {
+            'content-type': 'application/json',
+          },
+    };
+    
+
+    fetch('/profile/', set)
+        .then( (res) => {
+            return res;
+        })
+        .then( (result) => {
+            console.log(result);
+            link.style.display = 'none';
+        });
+
+    
+};
 
 const list = (eventlist) => {
     for (let array of eventlist) {
@@ -26,7 +50,6 @@ const list = (eventlist) => {
         group.setAttribute('aria-label', 'modify buttons');
 
 
-
         // Add data from the db
         // link.href = '/list/item?id=' + array.id;
         img.src = 'images/' + array.thumb;
@@ -38,10 +61,12 @@ const list = (eventlist) => {
 
         show.addEventListener('click', (evt) => {
             console.log(array.id);
+            open(array.id);
         });
 
         remove.addEventListener('click', (evt) => {
             console.log(array.id);
+            eventRemove(array._id, link);
         });
 
         group.appendChild(show);

@@ -25,6 +25,14 @@ const profileRouter = () => {
             });
     });
 
+    router.delete('/', loggedInOnly, (req, res, next) => {
+        console.log('perkele');
+        console.log(req.body.id);
+        events.findByIdAndRemove(req.body.id).then( () => {
+            res.send('deleted');
+        });
+    });
+
     return router;
 };
 
