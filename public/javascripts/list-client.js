@@ -1,5 +1,5 @@
 'use strict';
-console.log('does this work');
+
 const list = (eventlist) => {
     for (let array of eventlist) {
         // create elements
@@ -35,8 +35,8 @@ const set = {
     method: 'GET',
     credentials: 'include',
 };
-
-fetch('list/events', set)
+const allList = () => {
+    fetch('list/events', set)
     .then( (res) => {
         return res.json();
     })
@@ -44,4 +44,32 @@ fetch('list/events', set)
         console.log(result);
         list(result);
     });
+};
+
+const placeList = (id) => {
+    console.log(id);
+    fetch('list/events?id=' + id, set)
+    .then( (res) => {
+        return res.json();
+    })
+    .then( (result) => {
+        console.log(result);
+        list(result);
+    });
+};
+
+const getList = () => {
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get('id');
+    if (id != null) {
+        placeList(id);
+    } else {
+        allList();
+    }
+};
+
+getList();
+
+
+
 

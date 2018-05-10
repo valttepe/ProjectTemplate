@@ -13,3 +13,6 @@ html, body {
     width:100%;
     position: relative;
   }
+  button {
+    margin: 3px;
+  }

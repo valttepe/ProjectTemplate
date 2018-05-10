@@ -17,10 +17,17 @@ const listRouter = () => {
     });
 
     router.get('/events', loggedInOnly, (req, res, next) => {
-        events.find().then((eventlist) => {
-            console.log(eventlist);
-            res.send(eventlist);
-        });
+        console.log(req.query.id);
+        if (req.query.id != null) {
+            events.find({id: req.query.id}).then((events) =>{
+                res.send(events);
+            });
+        } else {
+            events.find().then((eventlist) => {
+                console.log(eventlist);
+                res.send(eventlist);
+            });
+        }
     });
 
     return router;

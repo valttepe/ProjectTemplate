@@ -32,10 +32,14 @@ const callback = (results, status) => {
   }
 };
 const eventList = (place) => {
-  const openList = document.querySelector('#openList');
-  openList.addEventListener('click', (evt) => {
+  const addEvent = document.querySelector('#add-event');
+  addEvent.addEventListener('click', (evt) => {
     console.log(place.id);
     window.location.href= '/add-event?id=' + place.id;
+  });
+  const list = document.querySelector('#openList');
+  list.addEventListener('click', (evt) => {
+    window.location.href = '/list?id=' + place.id;
   });
 };
 
@@ -52,7 +56,8 @@ const createMarker = (place) => {
     // InfoWindow content
     let infoContent = '<div id="content">'
     + '<p>' + place.name + '</p>'
-    + '<button type="button" id="openList"> Open </button>'
+    + '<button type="button" id="openList"> Events </button>'
+    + '<button type="button" id="add-event"> Add new </button>'
     + '<div>';
     infowindow.setContent(infoContent);
     infowindow.open(map, marker);
