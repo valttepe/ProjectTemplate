@@ -24,6 +24,28 @@ const itemRouter = () => {
         });
     });
 
+    router.post('/', loggedInOnly, (req, res, next) => {
+        ev.findById(req.body.id).then((event) => {
+            const convert = JSON.parse(JSON.stringify(event));
+            if (convert.count < convert.endRange) {
+                console.log('Täällä');
+                event.count = convert.count + 1;
+                console.log(event.count);
+                ev.update({_id: req.body.id}, {$set: {count: 6}}, (err, result) =>{
+                    if (err) return handleError(err);
+                    console.log(result);
+                    const msg = {};
+                    msg.success = 'true';
+                    res.send(msg);
+                });
+                
+            } else {
+                const json = {};
+                json.success = 'false';
+                res.send(json);
+            }
+        });
+    });
     return router;
 };
 
